@@ -2,8 +2,13 @@ import React from "react";
 import { Outlet } from "react-router";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import useAuth from "../hooks/useAuth";
+import Loading from "../components/Loader/Loading";
 
 function MainLayout() {
+  const { loading } = useAuth();
+
+  if (loading) return <Loading />;
   return (
     <div className="max-w-[1480px] mx-auto px-2  min-[500px]:px-6 xl:px-0">
       <div>
