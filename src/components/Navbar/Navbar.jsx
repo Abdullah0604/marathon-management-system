@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaAngleDown, FaBars, FaBell } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router";
 import { CiLogout } from "react-icons/ci";
-import { MdOutlineLogin } from "react-icons/md";
-// import AuthContext from "../../contexts/AuthContext/AuthContext";
+
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import Logo from "../Logo/Logo";
+import useAuth from "../../hooks/useAuth";
 
 function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  //   const { user, userLogOut } = use(AuthContext);
-  const user = {
-    displayName: "Mohammed Abdullah",
-    photoURL: "https://i.ibb.co/p6FBLFS6/IMG-20210711-115302.jpg",
-  };
+  const { user, userLogOut } = useAuth();
+  // const user = {
+  //   displayName: "Mohammed Abdullah",
+  //   photoURL: "https://i.ibb.co/p6FBLFS6/IMG-20210711-115302.jpg",
+  // };
   const handleCloseMenu = () => {
     setIsOpenMenu(false);
   };
@@ -76,7 +76,7 @@ function Navbar() {
   //theme control end
 
   const handleLogOut = () => {
-    // userLogOut();
+    userLogOut();
     navigate("/");
   };
 
