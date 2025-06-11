@@ -61,7 +61,7 @@ function Navbar() {
     </>
   );
 
-  //theme control start
+  //theme control starts
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
