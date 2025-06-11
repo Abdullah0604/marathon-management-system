@@ -1,5 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
+import Home from "../pages/Home/Home";
+import Register from "../pages/Register/Register";
+import Login from "../pages/Login/Login";
+import Marathons from "../pages/Marathons/Marathons";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        Component: DashBoard,
+        Component: Dashboard,
       },
       {
         path: "/register",
