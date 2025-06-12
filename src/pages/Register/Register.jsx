@@ -5,6 +5,8 @@ import AuthInput from "../sharedComponents/AuthInput";
 import GoogleIcon from "../sharedComponents/GoogleIcon";
 import registerJson from "../../assets/lotties/register.json";
 import Lottie from "lottie-react";
+import passwordChecker from "../../utils/passwordChecker";
+import { Bounce, toast } from "react-toastify";
 
 function Register() {
   const { setUser, registerUser, setLoading, updateUserProfile } = useAuth();
@@ -16,6 +18,22 @@ function Register() {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+
+    const isPassCorrect = passwordChecker(password);
+
+    if (isPassCorrect) {
+      return toast.error(isPassCorrect, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
     // console.log({ name, photo, email, password });
     registerUser(email, password)
       .then((result) => {
@@ -25,7 +43,7 @@ function Register() {
           if (result.user) {
             Swal.fire({
               title: "Welcome To RunNexus!",
-              text: "You have signed up successfully!",
+              text: "Your account has been created!",
               icon: "success",
             });
           }
@@ -72,7 +90,7 @@ function Register() {
                 Login with Google
               </button>
             </div>
-            <div className="divider text-red-600">OR</div>
+            <div className="divider text-rose-600">OR</div>
             <form
               onSubmit={handleCreateUser}
               className="space-y-4 md:space-y-6"
@@ -135,7 +153,7 @@ function Register() {
 
               <button
                 type="submit"
-                className="w-full rounded-full text-white bg-red-700 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium  text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="w-full rounded-full text-white bg-rose-700 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium  text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Create an account
               </button>

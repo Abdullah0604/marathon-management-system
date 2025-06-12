@@ -43,7 +43,7 @@ function Navbar() {
           <li onClick={handleCloseMenu}>
             <NavLink
               to="/register"
-              className="px-3 py-2 lg:py-0 font-medium lg:border-b-2 lg:border-b-teal-500 "
+              className="px-3 py-2 lg:py-0 font-medium lg:border-b-2 lg:border-b-rose-700 "
             >
               Register
             </NavLink>
@@ -51,7 +51,7 @@ function Navbar() {
           <li onClick={handleCloseMenu}>
             <NavLink
               to="/login"
-              className="px-3  py-2 font-medium lg:px-6 lg:py-2 lg:rounded-lg lg:bg-teal-500 lg:text-white "
+              className="px-3  py-2 font-medium lg:px-6 lg:py-2 lg:rounded-lg lg:border-2 lg:text-rose-600 dark:text-slate-200 lg:border-rose-600  "
             >
               Login
             </NavLink>

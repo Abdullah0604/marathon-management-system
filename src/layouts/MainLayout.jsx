@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import useAuth from "../hooks/useAuth";
 import Loading from "../components/Loader/Loading";
+import { ToastContainer } from "react-toastify";
 
 function MainLayout() {
   const { loading } = useAuth();
@@ -11,6 +12,7 @@ function MainLayout() {
   if (loading) return <Loading />;
   return (
     <div className="max-w-[1480px] mx-auto px-2  min-[500px]:px-6 xl:px-0">
+      <ToastContainer />
       <div>
         <Navbar />
       </div>
