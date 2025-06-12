@@ -11,7 +11,7 @@ function MainLayout() {
 
   if (loading) return <Loading />;
   return (
-    <div className="max-w-[1480px] mx-auto px-2  min-[500px]:px-6 xl:px-0">
+    <div className="max-w-[1400px] mx-auto px-2  min-[500px]:px-6 xl:px-0">
       <ToastContainer />
       <div>
         <Navbar />
