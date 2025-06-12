@@ -3,8 +3,12 @@ import { Link } from "react-router";
 function Logo() {
   return (
     <h3 className="text-xl md:text-2xl font-bold uppercase ">
-      <Link to="/">
-        Run<span className="text-rose-600">Nexus</span>
+      <Link to="/" className="flex gap-1 items-end ">
+        Run
+        <span className="text-orange-400 flex gap-1 items-end">
+          {" "}
+          <img className="w-9 pb-[5px]" src="./finish-line.png" alt="" /> Nexus
+        </span>
       </Link>
     </h3>
   );
