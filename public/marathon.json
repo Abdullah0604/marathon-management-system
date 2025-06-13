@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Dhaka City Half Marathon",
+    "registrationStart": "2025-07-01",
+    "registrationEnd": "2025-07-10",
+    "marathonDate": "2025-07-12",
+    "location": "Dhaka, Bangladesh",
+    "distance": "21.1 KM",
+    "description": "Experience the vibrant streets of Dhaka with thousands of passionate runners.",
+    "image": "https://i.ibb.co/d4YSZym5/marathon-10.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Chattogram Urban Run",
+    "registrationStart": "2025-07-15",
+    "registrationEnd": "2025-08-01",
+    "marathonDate": "2025-08-10",
+    "location": "Chattogram, Bangladesh",
+    "distance": "10 KM",
+    "description": "Join the coastal city’s exciting urban marathon featuring a scenic route and great energy.",
+    "image": "https://i.ibb.co/MLs21Nj/marathon-09.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Rajshahi River Marathon",
+    "registrationStart": "2025-08-10",
+    "registrationEnd": "2025-08-25",
+    "marathonDate": "2025-09-05",
+    "location": "Rajshahi, Bangladesh",
+    "distance": "42.2 KM",
+    "description": "Run along the beautiful Padma River and enjoy Rajshahi’s natural charm in this full marathon.",
+    "image": "https://i.ibb.co/N6Z9Wf63/marathon-08.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Sylhet Trail Run",
+    "registrationStart": "2025-09-20",
+    "registrationEnd": "2025-10-05",
+    "marathonDate": "2025-10-15",
+    "location": "Sylhet, Bangladesh",
+    "distance": "15 KM",
+    "description": "Breathe the fresh air of Sylhet's green hills and enjoy a unique trail running experience.",
+    "image": "https://i.ibb.co/V0nc6c6J/marathon-07.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Cox's Bazar Beach Marathon",
+    "registrationStart": "2025-10-15",
+    "registrationEnd": "2025-10-30",
+    "marathonDate": "2025-11-08",
+    "location": "Cox's Bazar, Bangladesh",
+    "distance": "5 KM",
+    "description": "Run along the world’s longest natural sea beach in this thrilling short-distance event.",
+    "image": "https://i.ibb.co/1JRTyvFm/marathon-06.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Barishal Run for Health",
+    "registrationStart": "2025-11-20",
+    "registrationEnd": "2025-12-10",
+    "marathonDate": "2025-12-20",
+    "location": "Barishal, Bangladesh",
+    "distance": "10 KM",
+    "description": "Promoting health and wellness, this event welcomes runners of all ages in Barishal.",
+    "image": "https://i.ibb.co/C5gzMwj5/marathon-05.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Khulna City Night Run",
+    "registrationStart": "2025-06-25",
+    "registrationEnd": "2025-07-05",
+    "marathonDate": "2025-07-15",
+    "location": "Khulna, Bangladesh",
+    "distance": "10 KM",
+    "description": "A glowing night run through the heart of Khulna under the city lights.",
+    "image": "https://i.ibb.co/LDx45tWQ/marathon-04.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Mymensingh Heritage Run",
+    "registrationStart": "2025-07-20",
+    "registrationEnd": "2025-08-05",
+    "marathonDate": "2025-08-15",
+    "location": "Mymensingh, Bangladesh",
+    "distance": "10 KM",
+    "description": "Explore historic sites while enjoying an energetic run through Mymensingh’s streets.",
+    "image": "https://i.ibb.co/4ndB5nsr/marathon-03.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Jessore Eco Marathon",
+    "registrationStart": "2025-08-25",
+    "registrationEnd": "2025-09-10",
+    "marathonDate": "2025-09-18",
+    "location": "Jessore, Bangladesh",
+    "distance": "21 KM",
+    "description": "Join the eco-friendly run through Jessore’s green and peaceful trails.",
+    "image": "https://i.ibb.co/1tCggrSZ/marathon-02.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  },
+  {
+    "title": "Rangpur Winter Run",
+    "registrationStart": "2025-12-01",
+    "registrationEnd": "2025-12-15",
+    "marathonDate": "2025-12-25",
+    "location": "Rangpur, Bangladesh",
+    "distance": "10 KM",
+    "description": "Celebrate winter with a joyful run through the breezy roads of Rangpur.",
+    "image": "https://i.ibb.co/N2jphnwd/marathon-01.jpg",
+    "createdAt": "2025-06-13T00:00:00Z",
+    "totalRegistrationCount": 0
+  }
+]
