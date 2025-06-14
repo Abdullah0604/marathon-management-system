@@ -5,6 +5,7 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Marathons from "../pages/Marathons/Marathons";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import PrivateRoute from "../private-route/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,12 @@ const router = createBrowserRouter([
       {
         path: "/marathons",
         Component: Marathons,
+      },
+      {
+        path: "/marathon-detail/:marathonId",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/marathon-details/${params.marathonId}`),
+        element: <PrivateRoute>{/* <MarathonDetails />, */}</PrivateRoute>,
       },
       {
         path: "/dashboard",

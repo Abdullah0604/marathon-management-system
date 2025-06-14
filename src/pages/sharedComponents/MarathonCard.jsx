@@ -5,6 +5,7 @@ import { Link } from "react-router";
 
 function MarathonCard({ marathon }) {
   const {
+    _id,
     image,
     title,
     distance,
@@ -18,7 +19,7 @@ function MarathonCard({ marathon }) {
         <img className="w-full rounded-lg h-60 object-cover" src={image} />
       </div>
 
-      <div className=" px-5">
+      <div className=" p-5">
         <div className="mb-5">
           <h3 className="text-lg font-bold text-purple-800 dark:text-white mb-2">
             {title}
@@ -44,8 +45,8 @@ function MarathonCard({ marathon }) {
         </div>
 
         <div>
-          <Link to={`/marathon-details`}>
-            <button className="w-full block text-center py-2 mt-7 bg-orange-400 rounded-lg">
+          <Link to={`/marathon-details/${_id}`}>
+            <button className="w-full block text-center py-2 mt-7 bg-orange-400 rounded-lg cursor-pointer text-slate-100 font-medium">
               See Details
             </button>
           </Link>
