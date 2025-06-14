@@ -13,7 +13,7 @@ function MarathonCard({ marathon }) {
     registrationStart,
     registrationEnd,
   } = marathon;
-  console.log(marathon);
+  // console.log(marathon);
   return (
     <div className="bg-white dark:bg-gray-400/10 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
       <div className="p-5">

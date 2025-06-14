@@ -4,7 +4,7 @@ import MarathonCard from "../sharedComponents/MarathonCard";
 
 function Marathons() {
   const marathons = useLoaderData();
-  console.log(marathons);
+  // console.log(marathons);
   return (
     <div className="my-24">
       <div className="text-center mb-10">

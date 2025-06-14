@@ -5,7 +5,7 @@ import { use } from "react";
 function Marathons({ marathonPromise }) {
   const marathonsData = use(marathonPromise);
 
-  console.log(marathonsData);
+  // console.log(marathonsData);
   return (
     <div className="my-24">
       <div className="text-center mb-10">
