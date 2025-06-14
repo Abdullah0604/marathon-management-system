@@ -27,7 +27,34 @@ function RegistrationMaration() {
       image: marathon?.image,
       location: marathon?.location,
     };
+
     console.log(participentData);
+
+    // axios
+    //   .post("http://localhost:3000/registration-marathon", participentData)
+    //   .then((response) => {
+    //     if (response.data.insertedId) {
+    //       axios
+    //         .patch("http://localhost:3000/update-registration-count", {
+    //           marathonId: marathon?._id,
+    //         })
+    //         .then((response) => {
+    //           console.log(response);
+    //         });
+
+    //       Swal.fire({
+    //         title: "🎉 Registration Complete!",
+    //         text: "You're officially registered for the marathon. Get ready to run!",
+    //         icon: "success",
+    //         confirmButtonText: "Awesome!",
+    //       });
+    //     }
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   });
+
     axios
       .get(
         `http://localhost:3000/registration-marathon-query?email=${user.email}&marathonId=${marathon?._id}`
@@ -37,7 +64,7 @@ function RegistrationMaration() {
           Swal.fire({
             icon: "error",
             title: "🚫 Already Registered!",
-            text: "You've already applied for this marathon. No need to apply again.",
+            text: "You've already applied for this marathon. No need to apply again. Please Eplore others marathon",
             confirmButtonText: "Okay, got it!",
           });
         } else {
@@ -48,6 +75,10 @@ function RegistrationMaration() {
             )
             .then((response) => {
               if (response.data.insertedId) {
+                axios.patch("http://localhost:3000/update-registration-count", {
+                  marathonId: marathon?._id,
+                });
+
                 Swal.fire({
                   title: "🎉 Registration Complete!",
                   text: "You're officially registered for the marathon. Get ready to run!",
