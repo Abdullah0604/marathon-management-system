@@ -8,11 +8,12 @@ function MarathonCard({ marathon }) {
     _id,
     image,
     title,
-    distance,
+
     location,
     registrationStart,
     registrationEnd,
   } = marathon;
+  console.log(marathon);
   return (
     <div className="bg-white dark:bg-gray-400/10 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
       <div className="p-5">
@@ -26,10 +27,6 @@ function MarathonCard({ marathon }) {
           </h3>
         </div>
 
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-          <FaRunning className="text-orange-500 mr-2" />
-          {distance}
-        </div>
         <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
           <MdLocationOn className="text-orange-500 mr-2" />
           Location: {location}
