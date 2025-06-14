@@ -20,6 +20,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/marathons",
+        hydrateFallbackElement: <Loading />,
+        loader: () => fetch("http://localhost:3000/marathons?marathons=all"),
         Component: Marathons,
       },
       {
