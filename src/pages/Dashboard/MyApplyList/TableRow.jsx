@@ -70,7 +70,7 @@ function TableRow({
         axios
           .put(`http://localhost:3000/update-registration`, updatedInfo)
           .then((response) => {
-            if (response?.data?.matchedCount) {
+            if (response?.data?.modifiedCount) {
               updateRegistration(id, updatedInfo);
               successAlert("Updated!", "Your registration has been updated");
               setIsOpenModal(false);

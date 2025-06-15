@@ -1,4 +1,4 @@
-function MarathonInput({ label, inputName, inputType, inputExample }) {
+function MarathonInput({ label, inputName, inputType, inputExample, dValue }) {
   return (
     <>
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
@@ -9,7 +9,8 @@ function MarathonInput({ label, inputName, inputType, inputExample }) {
           type={inputType}
           className="input w-full rounded-full"
           name={inputName}
-          placeholder={inputExample}
+          placeholder={inputExample && inputExample}
+          defaultValue={dValue ? dValue : ""}
           required
         />
       </fieldset>
@@ -17,7 +18,7 @@ function MarathonInput({ label, inputName, inputType, inputExample }) {
   );
 }
 
-function MarathonSelectInput({ label, inputName, selectValue }) {
+function MarathonSelectInput({ label, inputName, selectValue, dValue }) {
   return (
     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
       <label className="label capitalize text-gray-800 dark:text-gray-400 text-base font-medium">
@@ -25,7 +26,7 @@ function MarathonSelectInput({ label, inputName, selectValue }) {
       </label>
       <select
         name={inputName}
-        defaultValue={selectValue[0]}
+        defaultValue={dValue ? dValue : selectValue[0]}
         className="select  w-full rounded-full"
         required
       >

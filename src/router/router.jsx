@@ -10,7 +10,7 @@ import Loading from "../components/Loader/Loading";
 import MarathonDetails from "../pages/MarathonDetails/MarathonDetails";
 import RegistrationMaration from "../pages/RegistrationMaration/RegistrationMarathon";
 import AddMarathon from "../pages/Dashboard/AddMarathon/AddMarathon";
-import MyMarathonList from "../pages/Dashboard/MyMarathonList/MyMarathonList";
+import MyMarathons from "../pages/Dashboard/MyMarathonList/MyMarathons";
 import MyApply from "../pages/Dashboard/MyApplyList/MyApply";
 
 const router = createBrowserRouter([
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
             path: "my-marathon-list",
             element: (
               <PrivateRoute>
-                <MyMarathonList />{" "}
+                <MyMarathons />{" "}
               </PrivateRoute>
             ),
           },
