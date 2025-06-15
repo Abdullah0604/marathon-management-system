@@ -8,7 +8,7 @@ function RegistrationMaration() {
   const { user } = useAuth();
   const marathon = useLoaderData();
 
-  console.log(marathon);
+  // console.log(marathon);
 
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ function RegistrationMaration() {
       location: marathon?.location,
     };
 
-    console.log(participentData);
+    // console.log(participentData);
 
     // axios
     //   .post("http://localhost:3000/registration-marathon", participentData)

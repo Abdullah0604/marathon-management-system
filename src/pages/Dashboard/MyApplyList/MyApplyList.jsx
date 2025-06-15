@@ -8,7 +8,11 @@ function MyApplyList({ registrationPromise }) {
   const [allRegistrations, setAllRegistrations] = useState(registrationList);
 
   const removeRegistration = (id) => {
-    console.log(id);
+    const remainingRegistrations = allRegistrations.filter(
+      (registration) => registration._id !== id
+    );
+    setAllRegistrations(remainingRegistrations);
+    // console.log(id);
   };
   console.log(allRegistrations);
   return (

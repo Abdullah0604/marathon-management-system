@@ -57,7 +57,7 @@ function MarathonDetails() {
       </span>
     );
   }
-  console.log(isTodayWithinRange);
+  // console.log(isTodayWithinRange);
 
   return (
     <div className="max-w-6xl mx-auto px-2 sm:px-6 py-10 mt-10">

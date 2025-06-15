@@ -4,30 +4,24 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { confirmationAlert, successAlert } from "../../sharedComponents/Toasts";
+
 function TableRow({ registration, index, removeRegistration }) {
-  const { _id, title, location, firstName, lastName, startDate } = registration;
+  const { _id, title, location, firstName, lastName, startDate, marathonId } =
+    registration;
 
   const handleDeleteApplication = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    confirmationAlert().then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/jobs/${id}`)
+          .delete(`http://localhost:3000/registrations/${_id}`)
           .then((response) => {
             if (response.data.deletedCount) {
               removeRegistration(id);
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your application has been deleted.",
-                icon: "success",
-              });
+              successAlert("Deleted!", "Your registration has been deleted");
+              axios.patch(
+                `http://localhost:3000/update-registration-count?decForThisMarathon=${marathonId}`
+              );
             }
             console.log(response.data);
           })
