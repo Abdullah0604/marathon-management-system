@@ -2,6 +2,7 @@ import React from "react";
 import { use } from "react";
 import { useState } from "react";
 import TableRow from "./TableRow";
+import NoData from "../../sharedComponents/NoData";
 
 function MyApplyList({ registrationPromise }) {
   const registrationList = use(registrationPromise);
@@ -14,7 +15,31 @@ function MyApplyList({ registrationPromise }) {
     setAllRegistrations(remainingRegistrations);
     // console.log(id);
   };
+
+  const updateRegistration = (id, updatedInfo) => {
+    const updatedRegistrations = allRegistrations.map((registration) => {
+      if (registration._id === id) {
+        return {
+          ...registration,
+          firstName: updatedInfo?.firstName,
+          lastName: updatedInfo?.lastName,
+          contactNumber: updatedInfo?.contactNumber,
+        };
+      }
+      return registration;
+    });
+
+    setAllRegistrations(updatedRegistrations);
+  };
   console.log(allRegistrations);
+  if (!allRegistrations.length) {
+    return (
+      <NoData
+        title="No Registrations Yet"
+        description="You haven’t registered for any marathons yet. Once you do, your registration details will appear here. Stay motivated and keep running!"
+      />
+    );
+  }
   return (
     <div className="max-w-[1100px]  relative overflow-x-auto shadow-md sm:rounded-lg my-16">
       <table className=" w-full text-sm text-left  text-gray-500 dark:text-gray-400">
@@ -50,6 +75,7 @@ function MyApplyList({ registrationPromise }) {
               key={registration._id}
               registration={registration}
               removeRegistration={removeRegistration}
+              updateRegistration={updateRegistration}
               index={i}
             />
           ))}

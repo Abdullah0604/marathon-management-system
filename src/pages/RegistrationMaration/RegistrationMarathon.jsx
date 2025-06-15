@@ -8,7 +8,7 @@ function RegistrationMaration() {
   const { user } = useAuth();
   const marathon = useLoaderData();
 
-  // console.log(marathon);
+  console.log(marathon);
 
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ function RegistrationMaration() {
       contactNumber,
       email: user?.email,
       title: marathon?.title,
-      startDate: marathon?.registrationStart,
+      startDate: marathon?.marathonDate,
       marathonId: marathon?._id,
       image: marathon?.image,
       location: marathon?.location,
@@ -205,7 +205,7 @@ function RegistrationMaration() {
             name="startDate"
             id="startDate"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full block w-full p-2.5 dark:p-3 dark:bg-gray-700 focus:outline-0 dark:border-none dark:text-white"
-            value={marathon?.registrationStart}
+            value={marathon?.marathonDate}
             required
             readOnly
           />

@@ -7,7 +7,7 @@ import registerJson from "../../assets/lotties/register.json";
 import Lottie from "lottie-react";
 
 function Login() {
-  const { setUser, setLoading, loginUser } = useAuth();
+  const { setUser, setLoading, loginUser, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const handleLoginUser = (e) => {
@@ -18,6 +18,45 @@ function Login() {
     const password = form.password.value;
     // console.log({ name, photo, email, password });
     loginUser(email, password)
+      .then((result) => {
+        setUser({ ...result.user });
+        setLoading(false);
+        if (result.user) {
+          Swal.fire({
+            title: "Good to see you again!",
+            text: "You have logged in successfully!",
+            icon: "success",
+          });
+        }
+        navigate("/");
+      })
+      .catch((error) => {
+        // console.log(error.message);
+        if (error) {
+          let errorMessage = "Something went wrong!";
+
+          if (error.code === "auth/user-not-found") {
+            errorMessage = "No account found with this email.";
+          } else if (error.code === "auth/wrong-password") {
+            errorMessage = "Incorrect password. Please try again.";
+          } else if (error.code === "auth/invalid-email") {
+            errorMessage = "Please enter a valid email address.";
+          } else if (error.code === "auth/too-many-requests") {
+            errorMessage = "Too many attempts. Please try again later.";
+          }
+
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorMessage,
+          });
+        }
+        setLoading(false);
+      });
+  };
+
+  const handleLoginWithGoogle = () => {
+    loginWithGoogle()
       .then((result) => {
         setUser({ ...result.user });
         setLoading(false);
@@ -67,7 +106,10 @@ function Login() {
               <h1 className="text-xl mb-8 font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Login to your account
               </h1>
-              <button className="btn w-full rounded-full bg-white text-black border-[#e5e5e5]">
+              <button
+                onClick={() => handleLoginWithGoogle()}
+                className="btn w-full rounded-full bg-white text-black border-[#e5e5e5]"
+              >
                 <GoogleIcon />
                 Login with Google
               </button>
