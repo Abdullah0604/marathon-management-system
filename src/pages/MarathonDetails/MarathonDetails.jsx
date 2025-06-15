@@ -5,6 +5,9 @@ import {
   FaCalendarAlt,
   FaUserPlus,
   FaRegClock,
+  FaCheckCircle,
+  FaHourglassHalf,
+  FaTimesCircle,
 } from "react-icons/fa";
 
 function MarathonDetails() {
@@ -21,6 +24,40 @@ function MarathonDetails() {
     registrationEnd,
     totalRegistrationCount,
   } = marathonDetails;
+
+  const startDate = new Date(registrationStart);
+  const endDate = new Date(registrationEnd);
+  const today = new Date();
+  startDate.setHours(0, 0, 0, 0);
+  endDate.setHours(23, 59, 59, 999);
+  today.setHours(0, 0, 0, 0);
+
+  const isTodayWithinRange = today >= startDate && today <= endDate;
+
+  let registrationMessage = "";
+  if (today < startDate) {
+    registrationMessage = (
+      <span className="rounded-full px-2  text-yellow-500 mt-2 text-sm flex gap-x-2">
+        <FaHourglassHalf className="text-lg" />
+        Registration hasn't started yet.
+      </span>
+    );
+  } else if (today > endDate) {
+    registrationMessage = (
+      <span className="rounded-full px-2  text-red-500 mt-2 text-sm flex gap-x-2">
+        <FaHourglassHalf className="text-lg" />
+        Registration period is over.
+      </span>
+    );
+  } else {
+    registrationMessage = (
+      <span className="rounded-full px-2  text-green-600 mt-2 text-sm flex gap-x-2">
+        <FaCheckCircle className="text-lg" />
+        Registration is open.
+      </span>
+    );
+  }
+  console.log(isTodayWithinRange);
 
   return (
     <div className="max-w-6xl mx-auto px-2 sm:px-6 py-10 mt-10">
@@ -91,12 +128,21 @@ function MarathonDetails() {
               </span>
             </p>
           </div>
-
-          <Link to={`/registration-maration/${_id}`}>
-            <button className="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full cursor-pointer font-medium transition duration-300 text-[15px]">
-              Register Now
-            </button>
-          </Link>
+          <div className=" flex flex-col gap-y-3">
+            {registrationMessage}
+            <Link to={`/registration-maration/${_id}`}>
+              <button
+                disabled={!isTodayWithinRange}
+                className={` px-6 py-2 rounded-full font-medium transition duration-300 text-[15px] text-white  ${
+                  isTodayWithinRange
+                    ? "bg-orange-500 hover:bg-orange-600 cursor-pointer"
+                    : "bg-gray-400 cursor-not-allowed"
+                }`}
+              >
+                Register Now
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

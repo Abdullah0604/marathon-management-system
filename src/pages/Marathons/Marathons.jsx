@@ -1,9 +1,12 @@
 import React from "react";
 import { useLoaderData } from "react-router";
 import MarathonCard from "../sharedComponents/MarathonCard";
+import Loading from "../../components/Loader/Loading";
 
 function Marathons() {
   const marathons = useLoaderData();
+
+  if (!marathons) return <Loading />;
   // console.log(marathons);
   return (
     <div className="my-24">
