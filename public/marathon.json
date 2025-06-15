@@ -9,7 +9,8 @@
     "description": "Run through the heart of Dhaka city and embrace its buzzing urban energy. With cheering crowds, lively streets, and iconic landmarks along the route, the Dhaka City Half Marathon offers an unforgettable experience for passionate runners and fitness lovers alike.",
     "image": "https://i.ibb.co/d4YSZym5/marathon-10.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "mdabdullah6548ctg@gmail.com"
   },
   {
     "title": "Chattogram Urban Run",
@@ -21,7 +22,8 @@
     "description": "Explore the bustling port city of Chattogram with this thrilling urban marathon. Enjoy scenic coastal roads, fresh sea breezes, and modern cityscapes as you take on a high-energy 10KM run that combines fun, fitness, and coastal charm.",
     "image": "https://i.ibb.co/MLs21Nj/marathon-09.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "anusa@begum.com"
   },
   {
     "title": "Rajshahi River Marathon",
@@ -33,7 +35,8 @@
     "description": "Challenge yourself in this full marathon set against the peaceful backdrop of the Padma River. The Rajshahi River Marathon offers both experienced and new runners the chance to enjoy wide riverbanks, fresh air, and a truly scenic route in the city of silk.",
     "image": "https://i.ibb.co/N6Z9Wf63/marathon-08.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "solim@ullah.com"
   },
   {
     "title": "Sylhet Trail Run",
@@ -45,7 +48,8 @@
     "description": "Run through Sylhet’s lush green hills, tea gardens, and misty trails in this 15KM nature-based trail run. Perfect for runners who love scenic beauty and off-road adventure, this event connects you to nature like never before.",
     "image": "https://i.ibb.co/V0nc6c6J/marathon-07.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "rohim@ullah.com"
   },
   {
     "title": "Cox's Bazar Beach Marathon",
@@ -57,7 +61,8 @@
     "description": "Feel the sand beneath your feet as you run alongside the world's longest natural sea beach. With the waves as your soundtrack and the ocean breeze in your hair, this 5KM beach run offers a fresh and energizing experience like no other.",
     "image": "https://i.ibb.co/1JRTyvFm/marathon-06.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "mdabdullah6548ctg@gmail.com"
   },
   {
     "title": "Barishal Run for Health",
@@ -69,7 +74,8 @@
     "description": "Dedicated to promoting public health and wellness, this 10KM run through Barishal’s calm and welcoming roads is perfect for families, fitness beginners, and seasoned athletes who want to support a healthy lifestyle.",
     "image": "https://i.ibb.co/C5gzMwj5/marathon-05.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "anusa@begum.com"
   },
   {
     "title": "Khulna City Night Run",
@@ -81,7 +87,8 @@
     "description": "Light up the streets with this magical 10KM night run through Khulna. With colorful lights, energetic music, and a vibrant nighttime vibe, this unique event is a celebration of health, fun, and the beauty of running after dark.",
     "image": "https://i.ibb.co/LDx45tWQ/marathon-04.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "solim@ullah.com"
   },
   {
     "title": "Mymensingh Heritage Run",
@@ -93,7 +100,8 @@
     "description": "Discover Mymensingh’s historical charm on foot as you participate in this cultural 10KM run. Pass by old buildings, traditional neighborhoods, and heritage landmarks in an event that combines fitness with exploration.",
     "image": "https://i.ibb.co/4ndB5nsr/marathon-03.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "rohim@ullah.com"
   },
   {
     "title": "Jessore Eco Marathon",
@@ -105,7 +113,8 @@
     "description": "Join this eco-conscious marathon through the green and serene landscapes of Jessore. Run for nature and raise awareness for environmental sustainability in a half marathon filled with fresh air and calm surroundings.",
     "image": "https://i.ibb.co/1tCggrSZ/marathon-02.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "mdabdullah6548ctg@gmail.com"
   },
   {
     "title": "Rangpur Winter Run",
@@ -117,6 +126,7 @@
     "description": "Wrap yourself in the cool breeze of winter as you run through the calm streets of Rangpur. This seasonal 10KM run brings holiday spirit and fitness together in one joyful event for the whole family.",
     "image": "https://i.ibb.co/N2jphnwd/marathon-01.jpg",
     "createdAt": "2025-06-13T00:00:00Z",
-    "totalRegistrationCount": 0
+    "totalRegistrationCount": 0,
+    "email": "anusa@begum.com"
   }
 ]
