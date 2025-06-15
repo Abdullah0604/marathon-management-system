@@ -11,7 +11,7 @@ import MarathonDetails from "../pages/MarathonDetails/MarathonDetails";
 import RegistrationMaration from "../pages/RegistrationMaration/RegistrationMarathon";
 import AddMarathon from "../pages/Dashboard/AddMarathon/AddMarathon";
 import MyMarathonList from "../pages/Dashboard/MyMarathonList/MyMarathonList";
-import MyApplyList from "../pages/Dashboard/MyApplyList/MyApplyList";
+import MyApply from "../pages/Dashboard/MyApplyList/MyApply";
 
 const router = createBrowserRouter([
   {
@@ -52,23 +52,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        Component: Dashboard,
+        element: (
+          <PrivateRoute>
+            <Dashboard />{" "}
+          </PrivateRoute>
+        ),
         children: [
           {
             index: true,
-            Component: AddMarathon,
+            element: (
+              <PrivateRoute>
+                <AddMarathon />{" "}
+              </PrivateRoute>
+            ),
           },
           {
             path: "add-marathon",
-            Component: AddMarathon,
+            element: (
+              <PrivateRoute>
+                <AddMarathon />{" "}
+              </PrivateRoute>
+            ),
           },
           {
             path: "my-marathon-list",
-            Component: MyMarathonList,
+            element: (
+              <PrivateRoute>
+                <MyMarathonList />{" "}
+              </PrivateRoute>
+            ),
           },
           {
             path: "my-apply-list",
-            Component: MyApplyList,
+            element: (
+              <PrivateRoute>
+                <MyApply />{" "}
+              </PrivateRoute>
+            ),
           },
         ],
       },
