@@ -11,6 +11,7 @@ function MyApplyList({ registrationPromise }) {
   const { user } = useAuth();
   const registrationList = use(registrationPromise);
   const [allRegistrations, setAllRegistrations] = useState(registrationList);
+
   const [searchRegistraions, setSearchRegistrations] =
     useState(registrationList);
 
@@ -18,7 +19,11 @@ function MyApplyList({ registrationPromise }) {
     const remainingRegistrations = allRegistrations.filter(
       (registration) => registration._id !== id
     );
+    const remainingRegistrationsInSearch = searchRegistraions.filter(
+      (registration) => registration._id !== id
+    );
     setAllRegistrations(remainingRegistrations);
+    setSearchRegistrations(remainingRegistrationsInSearch);
     // console.log(id);
   };
 
@@ -34,8 +39,22 @@ function MyApplyList({ registrationPromise }) {
       }
       return registration;
     });
+    const updatedRegistrationsInSearch = searchRegistraions.map(
+      (registration) => {
+        if (registration._id === id) {
+          return {
+            ...registration,
+            firstName: updatedInfo?.firstName,
+            lastName: updatedInfo?.lastName,
+            contactNumber: updatedInfo?.contactNumber,
+          };
+        }
+        return registration;
+      }
+    );
 
     setAllRegistrations(updatedRegistrations);
+    setSearchRegistrations(updatedRegistrationsInSearch);
   };
 
   const handleSearchValue = (e) => {
@@ -52,7 +71,7 @@ function MyApplyList({ registrationPromise }) {
       .then((response) => {
         console.log(response);
         if (!response.data.length) {
-          setSearchRegistrations([]);
+          setSearchRegistrations("not match");
         } else {
           setSearchRegistrations(response.data);
         }
@@ -63,7 +82,7 @@ function MyApplyList({ registrationPromise }) {
   };
   console.log(allRegistrations);
 
-  if (!searchRegistraions.length) {
+  if (searchRegistraions === "not match") {
     return (
       <NoData
         title="No Matches Found"
@@ -71,7 +90,9 @@ function MyApplyList({ registrationPromise }) {
         button={
           <button
             className="px-6 py-2 mt-5 text-slate-100 cursor-pointer bg-orange-500 rounded-full"
-            onClick={() => setSearchRegistrations(registrationList)}
+            onClick={() => {
+              setSearchRegistrations(registrationList);
+            }}
           >
             Explore All Registrations
           </button>
@@ -135,15 +156,25 @@ function MyApplyList({ registrationPromise }) {
           </tr>
         </thead>
         <tbody>
-          {allRegistrations.map((registration, i) => (
-            <TableRow
-              key={registration._id}
-              registration={registration}
-              removeRegistration={removeRegistration}
-              updateRegistration={updateRegistration}
-              index={i}
-            />
-          ))}
+          {searchRegistraions.length
+            ? searchRegistraions.map((registration, i) => (
+                <TableRow
+                  key={registration._id}
+                  registration={registration}
+                  removeRegistration={removeRegistration}
+                  updateRegistration={updateRegistration}
+                  index={i}
+                />
+              ))
+            : allRegistrations.map((registration, i) => (
+                <TableRow
+                  key={registration._id}
+                  registration={registration}
+                  removeRegistration={removeRegistration}
+                  updateRegistration={updateRegistration}
+                  index={i}
+                />
+              ))}
         </tbody>
       </table>
     </div>
