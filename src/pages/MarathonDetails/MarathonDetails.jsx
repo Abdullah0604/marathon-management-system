@@ -79,7 +79,7 @@ function MarathonDetails() {
         </div>
 
         {/* Content */}
-        <div className="w-full md:w-1/2 space-y-4">
+        <div className="w-full md:w-1/2 space-y-4 bg-slate-50 dark:bg-transparent py-10 md:px-5 rounded-xl">
           <h2 className="text-3xl md:text-4xl font-bold text-orange-500">
             {title}
           </h2>
@@ -137,7 +137,7 @@ function MarathonDetails() {
           </div>
           <div className=" flex flex-col gap-y-3">
             {registrationMessage}
-            {today <= startDate && (
+            {today < startDate && (
               <>
                 <p className="font-medium rounded-full px-2 text-yellow-500 mt-1 text-sm flex items-center gap-x-2">
                   <AiOutlineClockCircle className=" text-yellow-500 text-xl" />
