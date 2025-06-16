@@ -9,7 +9,9 @@ import {
   FaHourglassHalf,
   FaTimesCircle,
 } from "react-icons/fa";
+import { AiOutlineClockCircle } from "react-icons/ai";
 import NotFound from "../NotFound/NotFound";
+import CountDown from "../sharedComponents/CountDown";
 
 function MarathonDetails() {
   const marathonDetails = useLoaderData();
@@ -135,10 +137,23 @@ function MarathonDetails() {
           </div>
           <div className=" flex flex-col gap-y-3">
             {registrationMessage}
+            {today <= startDate && (
+              <>
+                <p className="font-medium rounded-full px-2 text-yellow-500 mt-1 text-sm flex items-center gap-x-2">
+                  <AiOutlineClockCircle className=" text-yellow-500 text-xl" />
+                  Registration starts in:
+                </p>
+
+                <p>
+                  <CountDown registrationStart={registrationStart} />
+                </p>
+              </>
+            )}
+
             <Link to={`/registration-maration/${_id}`}>
               <button
                 disabled={!isTodayWithinRange}
-                className={` px-6 py-2 rounded-full font-medium transition duration-300 text-[15px] text-white  ${
+                className={` mt-4 px-6 py-2 rounded-full font-medium transition duration-300 text-[15px] text-white  ${
                   isTodayWithinRange
                     ? "bg-orange-500 hover:bg-orange-600 cursor-pointer"
                     : "bg-gray-400 cursor-not-allowed"
