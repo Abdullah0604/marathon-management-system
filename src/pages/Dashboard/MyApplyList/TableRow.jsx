@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import axios from "axios";
+// import axios from "axios";
 import { confirmationAlert, successAlert } from "../../sharedComponents/Toasts";
 import useAuth from "../../../hooks/useAuth";
 import AuthInput from "../../sharedComponents/AuthInput";
 import { RxCross2 } from "react-icons/rx";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 function TableRow({
   registration,
@@ -26,18 +27,19 @@ function TableRow({
     contactNumber,
   } = registration;
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const axiosSecure = useAxiosSecure();
 
   const handleDeleteRegistration = (id) => {
     confirmationAlert().then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:3000/registrations/${_id}`)
+        axiosSecure
+          .delete(`/registrations/${_id}?email=${user.email}`)
           .then((response) => {
             if (response.data.deletedCount) {
               removeRegistration(id);
               successAlert("Deleted!", "Your registration has been deleted");
-              axios.patch(
-                `http://localhost:3000/update-registration-count?decForThisMarathon=${marathonId}`
+              axiosSecure.patch(
+                `/update-registration-count?decForThisMarathon=${marathonId}&email=${user.email}`
               );
             }
             console.log(response.data);
@@ -67,8 +69,8 @@ function TableRow({
       "Yes, Update it"
     ).then((res) => {
       if (res.isConfirmed) {
-        axios
-          .put(`http://localhost:3000/update-registration`, updatedInfo)
+        axiosSecure
+          .put(`/update-registration?email=${user.email}`, updatedInfo)
           .then((response) => {
             if (response?.data?.modifiedCount) {
               updateRegistration(id, updatedInfo);

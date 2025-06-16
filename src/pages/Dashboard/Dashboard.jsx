@@ -8,18 +8,18 @@ export default function DashboardLayout() {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
   const location = useLocation();
   return (
-    <div className="w-full min-h-screen flex lg:gap-x-10 relative">
+    <div className="max-w-[1400px] min-h-screen flex lg:gap-x-10 relative">
       {/* Sidebar */}
       <div
         className={`bg-blue-50 dark:bg-gray-800 z-40 w-[250px] min-h-screen px-5  py-10 dashboard-links transition-transform duration-300 
         fixed top-0 left-0 ${
           isOpenSidebar ? "translate-x-0" : "-translate-x-full"
         } 
-        lg:static lg:translate-x-0`}
+      xl:static xl:translate-x-0`}
       >
         <div>
           <button
-            className=" p-1 rounded-full bg-gray-600 shadow-lg  hover:bg-slate-100 hover:text-red-500 duration-300 cursor-pointer text-slate-200 lg:hidden"
+            className=" p-1 rounded-full bg-gray-600 shadow-lg  hover:bg-slate-100 hover:text-red-500 duration-300 cursor-pointer text-slate-200 xl:hidden"
             onClick={() => setIsOpenSidebar(!isOpenSidebar)}
           >
             <RxCross2 size={20} />
@@ -64,8 +64,8 @@ export default function DashboardLayout() {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 lg:py-12  ">
-        <div className=" lg:hidden">
+      <div className="w-full lg:py-12  ">
+        <div className=" xl:hidden">
           <button
             className="cursor-pointer"
             onClick={() => setIsOpenSidebar(!isOpenSidebar)}
@@ -74,7 +74,7 @@ export default function DashboardLayout() {
           </button>
         </div>
 
-        <div>
+        <div className="w-full ">
           <Outlet />
         </div>
       </div>

@@ -1,12 +1,14 @@
 import React, { Suspense } from "react";
 import Header from "../../sharedComponents/Header";
-import applicantEmailApi from "../../../api/applicantEmailApi";
+// import applicantEmailApi from "../../../api/applicantEmailApi";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../components/Loader/Loading";
 import MyApplyList from "./MyApplyList";
+import useAllApi from "../../../api/useAllApi";
 
 function MyApply() {
   const { user } = useAuth();
+  const { myRegistrationsPromise } = useAllApi();
   return (
     <div>
       <Header
@@ -17,7 +19,7 @@ function MyApply() {
 
       <Suspense fallback={<Loading />}>
         <MyApplyList
-          registrationPromise={applicantEmailApi(user && user.email)}
+          registrationPromise={myRegistrationsPromise(user && user.email)}
         />
       </Suspense>
     </div>

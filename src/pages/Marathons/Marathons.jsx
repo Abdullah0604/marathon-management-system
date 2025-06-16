@@ -17,10 +17,6 @@ function Marathons() {
     axios
       .get(`http://localhost:3000/sorted-marathons?sortValue=${value}`)
       .then((res) => {
-        console.log(res.data);
-        res.data.forEach((m) => {
-          console.log(m.createdAt);
-        });
         setSortedMarathonns(res.data);
       })
       .catch((error) => {

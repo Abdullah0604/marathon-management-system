@@ -6,9 +6,11 @@ import NoData from "../../sharedComponents/NoData";
 import axios from "axios";
 import { FaSearch } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 function MyApplyList({ registrationPromise }) {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const registrationList = use(registrationPromise);
   const [allRegistrations, setAllRegistrations] = useState(registrationList);
 
@@ -62,12 +64,8 @@ function MyApplyList({ registrationPromise }) {
     const title = e.target.search.value;
     console.log(title);
 
-    axios
-      .get(
-        `http://localhost:3000/search-registrations?title=${title}&email=${
-          user && user.email
-        }`
-      )
+    axiosSecure
+      .get(`/search-registrations?title=${title}&email=${user && user.email}`)
       .then((response) => {
         console.log(response);
         if (!response.data.length) {
@@ -109,16 +107,16 @@ function MyApplyList({ registrationPromise }) {
     );
   }
   return (
-    <div className="max-w-[1100px]  relative overflow-x-auto shadow-md sm:rounded-lg my-16 ">
+    <>
       <form
         onSubmit={handleSearchValue}
-        className="my-7 px-2 md:px-4 flex items-center"
+        className="my-7 max-w-[300px] mx-auto md:mx-0 md:max-w-[400px] px-2 md:px-4 flex items-center"
       >
         <input
           name="search"
           type="text"
           placeholder="search by marathon title...."
-          className="input max-w-[300px] md:max-w-[400px] rounded-xl"
+          className="input  rounded-xl"
         />
         <button
           type="submit"
@@ -127,57 +125,58 @@ function MyApplyList({ registrationPromise }) {
           <FaSearch size={20} />
         </button>
       </form>
+      <div className=" max-w-[1100px] mx-auto   relative overflow-x-auto shadow-md sm:rounded-lg my-10 ">
+        <table className=" w-full text-sm text-left  text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="p-4">
+                #
+              </th>
+              <th scope="col" className="px-6 py-3 text-left ">
+                Title
+              </th>
+              <th scope="col" className="px-6 py-3 text-left">
+                Start Date
+              </th>
+              <th scope="col" className="px-6 py-3 text-left">
+                Location
+              </th>
+              <th scope="col" className="px-6 py-3 text-left">
+                First Name
+              </th>
+              <th scope="col" className="px-6 py-3 text-left">
+                Last Name
+              </th>
 
-      <table className=" w-full text-sm text-left  text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="p-4">
-              #
-            </th>
-            <th scope="col" className="px-6 py-3 text-left ">
-              Title
-            </th>
-            <th scope="col" className="px-6 py-3 text-left">
-              Start Date
-            </th>
-            <th scope="col" className="px-6 py-3 text-left">
-              Location
-            </th>
-            <th scope="col" className="px-6 py-3 text-left">
-              First Name
-            </th>
-            <th scope="col" className="px-6 py-3 text-left">
-              Last Name
-            </th>
-
-            <th scope="col" className="px-6 py-3 text-left">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {searchRegistraions.length
-            ? searchRegistraions.map((registration, i) => (
-                <TableRow
-                  key={registration._id}
-                  registration={registration}
-                  removeRegistration={removeRegistration}
-                  updateRegistration={updateRegistration}
-                  index={i}
-                />
-              ))
-            : allRegistrations.map((registration, i) => (
-                <TableRow
-                  key={registration._id}
-                  registration={registration}
-                  removeRegistration={removeRegistration}
-                  updateRegistration={updateRegistration}
-                  index={i}
-                />
-              ))}
-        </tbody>
-      </table>
-    </div>
+              <th scope="col" className="px-6 py-3 text-left">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {searchRegistraions.length
+              ? searchRegistraions.map((registration, i) => (
+                  <TableRow
+                    key={registration._id}
+                    registration={registration}
+                    removeRegistration={removeRegistration}
+                    updateRegistration={updateRegistration}
+                    index={i}
+                  />
+                ))
+              : allRegistrations.map((registration, i) => (
+                  <TableRow
+                    key={registration._id}
+                    registration={registration}
+                    removeRegistration={removeRegistration}
+                    updateRegistration={updateRegistration}
+                    index={i}
+                  />
+                ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

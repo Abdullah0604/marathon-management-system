@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import { Link } from "react-router";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import axios from "axios";
+// import axios from "axios";
 import { confirmationAlert, successAlert } from "../../sharedComponents/Toasts";
-// import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 import { RxCross2 } from "react-icons/rx";
 import { MarathonInput, MarathonSelectInput } from "../AddMarathon/Inputs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 function MarathonTableRow({ marathon, removeMarathon, updateMarathon, index }) {
-  //   const { user } = useAuth();
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const {
     _id,
     title,
@@ -42,8 +44,8 @@ function MarathonTableRow({ marathon, removeMarathon, updateMarathon, index }) {
   const handleDeleteMarathon = (id) => {
     confirmationAlert().then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:3000/marathons/${_id}`)
+        axiosSecure
+          .delete(`/marathons/${_id}?email=${user.email}`)
           .then((response) => {
             if (response.data.deletedCount) {
               removeMarathon(id);
@@ -82,8 +84,8 @@ function MarathonTableRow({ marathon, removeMarathon, updateMarathon, index }) {
       "Yes, Update it"
     ).then((res) => {
       if (res.isConfirmed) {
-        axios
-          .put(`http://localhost:3000/update-marathon/${_id}`, trimmedMarathon)
+        axiosSecure
+          .put(`/update-marathon/${_id}?email=${user.email}`, trimmedMarathon)
           .then((response) => {
             if (response?.data?.modifiedCount) {
               updateMarathon(id, trimmedMarathon);
