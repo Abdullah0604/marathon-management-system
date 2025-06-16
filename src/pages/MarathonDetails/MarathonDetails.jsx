@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useParams } from "react-router";
 import {
   FaMapMarkerAlt,
   FaRunning,
@@ -9,9 +9,11 @@ import {
   FaHourglassHalf,
   FaTimesCircle,
 } from "react-icons/fa";
+import NotFound from "../NotFound/NotFound";
 
 function MarathonDetails() {
   const marathonDetails = useLoaderData();
+  const { marathonId } = useParams();
   const {
     _id,
     image,
@@ -25,6 +27,9 @@ function MarathonDetails() {
     totalRegistrationCount,
   } = marathonDetails;
 
+  if (_id !== marathonId) {
+    return <NotFound />;
+  }
   const startDate = new Date(registrationStart);
   const endDate = new Date(registrationEnd);
   const today = new Date();

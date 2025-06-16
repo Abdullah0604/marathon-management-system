@@ -1,15 +1,18 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 import Swal from "sweetalert2";
 import axios from "axios";
 import AuthInput from "../sharedComponents/AuthInput";
 import useAuth from "../../hooks/useAuth";
+import NotFound from "../NotFound/NotFound";
 
 function RegistrationMaration() {
   const { user } = useAuth();
   const marathon = useLoaderData();
-
-  console.log(marathon);
-
+  const { marathonId } = useParams();
+  // console.log(marathon);
+  if (marathon?._id !== marathonId) {
+    return <NotFound />;
+  }
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

@@ -12,6 +12,7 @@ import RegistrationMaration from "../pages/RegistrationMaration/RegistrationMara
 import AddMarathon from "../pages/Dashboard/AddMarathon/AddMarathon";
 import MyMarathons from "../pages/Dashboard/MyMarathonList/MyMarathons";
 import MyApply from "../pages/Dashboard/MyApplyList/MyApply";
+import NotFound from "../pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         Component: Login,
+      },
+      {
+        path: "/*",
+        Component: NotFound,
       },
     ],
   },

@@ -7,7 +7,7 @@ function Logo() {
         Run
         <span className="text-orange-400 flex gap-1 items-end">
           {" "}
-          <img className="w-9 pb-[5px]" src="./finish-line.png" alt="" /> Nexus
+          <img className="w-9 pb-[5px]" src="/finishLine.png" alt="" /> Nexus
         </span>
       </Link>
     </h3>

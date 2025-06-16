@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import AuthInput from "../sharedComponents/AuthInput";
@@ -9,7 +9,9 @@ import Lottie from "lottie-react";
 function Login() {
   const { setUser, setLoading, loginUser, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
+  console.log(state);
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -28,7 +30,7 @@ function Login() {
             icon: "success",
           });
         }
-        navigate("/");
+        navigate(`${state ? state : "/"}`);
       })
       .catch((error) => {
         // console.log(error.message);
@@ -67,7 +69,7 @@ function Login() {
             icon: "success",
           });
         }
-        navigate("/");
+        navigate(`${state ? state : "/"}`);
       })
       .catch((error) => {
         // console.log(error.message);
