@@ -23,3 +23,6 @@ body {
 .dashboard-links > .active {
   color: rgb(255, 119, 0);
 }
+.login .active {
+  color: aliceblue;
+}

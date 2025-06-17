@@ -11,7 +11,7 @@ export default function DashboardLayout() {
     <div className="max-w-[1400px] min-h-screen flex lg:gap-x-10 relative">
       {/* Sidebar */}
       <div
-        className={`bg-blue-50 dark:bg-gray-800 z-40 w-[250px] min-h-screen px-5  py-10 dashboard-links transition-transform duration-300 
+        className={`bg-blue-50 dark:bg-gray-800 z-40 w-[250px] xl:my-16 xl:rounded-xl min-h-screen px-5  py-10 dashboard-links transition-transform duration-300 
         fixed top-0 left-0 ${
           isOpenSidebar ? "translate-x-0" : "-translate-x-full"
         } 

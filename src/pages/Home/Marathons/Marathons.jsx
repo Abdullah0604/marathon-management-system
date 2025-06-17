@@ -20,9 +20,10 @@ function Marathons({ marathonPromise }) {
       </div>
 
       <div className="grid md:grid-cols-2 xl:grid-cols-3 my-16 gap-x-20 gap-y-10 ">
-        {marathonsData.map((marathon) => (
-          <MarathonCard key={marathon._id} marathon={marathon} />
-        ))}
+        {marathonsData &&
+          marathonsData.map((marathon) => (
+            <MarathonCard key={marathon._id} marathon={marathon} />
+          ))}
       </div>
     </div>
   );

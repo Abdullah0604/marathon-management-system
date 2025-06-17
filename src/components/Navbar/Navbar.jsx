@@ -48,7 +48,7 @@ function Navbar() {
               Register
             </NavLink>
           </li>
-          <li onClick={handleCloseMenu}>
+          <li className="login" onClick={handleCloseMenu}>
             <NavLink
               to="/login"
               className="px-3  py-2 font-medium lg:px-6 lg:py-2 lg:rounded-lg  lg:text-slate-100 lg:bg-orange-400  "

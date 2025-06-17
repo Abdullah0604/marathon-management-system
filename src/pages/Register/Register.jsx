@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import AuthInput from "../sharedComponents/AuthInput";
@@ -9,8 +9,15 @@ import passwordChecker from "../../utils/passwordChecker";
 import { Bounce, toast } from "react-toastify";
 
 function Register() {
-  const { setUser, registerUser, setLoading, updateUserProfile } = useAuth();
+  const {
+    setUser,
+    registerUser,
+    setLoading,
+    updateUserProfile,
+    loginWithGoogle,
+  } = useAuth();
   const navigate = useNavigate();
+  const { state } = useLocation();
   const handleCreateUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -72,6 +79,44 @@ function Register() {
         setLoading(false);
       });
   };
+  const handleLoginWithGoogle = () => {
+    loginWithGoogle()
+      .then((result) => {
+        setUser({ ...result.user });
+        setLoading(false);
+        if (result.user) {
+          Swal.fire({
+            title: "Good to see you again!",
+            text: "You have logged in successfully!",
+            icon: "success",
+          });
+        }
+        navigate(`${state ? state : "/"}`);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error) {
+          let errorMessage = "Something went wrong!";
+
+          if (error.code === "auth/user-not-found") {
+            errorMessage = "No account found with this email.";
+          } else if (error.code === "auth/wrong-password") {
+            errorMessage = "Incorrect password. Please try again.";
+          } else if (error.code === "auth/invalid-email") {
+            errorMessage = "Please enter a valid email address.";
+          } else if (error.code === "auth/too-many-requests") {
+            errorMessage = "Too many attempts. Please try again later.";
+          }
+
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorMessage,
+          });
+        }
+        setLoading(false);
+      });
+  };
   return (
     <section className="bg-gray-50 dark:bg-gray-900 my-16">
       <div className="flex items-center justify-center px-2 md:px-6 py-8  mx-auto md:min-h-screen lg:py-0">
@@ -85,7 +130,10 @@ function Register() {
               <h1 className="text-xl mb-8 font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create an account
               </h1>
-              <button className="btn w-full rounded-full bg-white text-black border-[#e5e5e5]">
+              <button
+                onClick={handleLoginWithGoogle}
+                className="btn w-full rounded-full bg-white text-black border-[#e5e5e5]"
+              >
                 <GoogleIcon />
                 Login with Google
               </button>

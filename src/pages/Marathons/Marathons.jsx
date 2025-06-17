@@ -61,7 +61,8 @@ function Marathons() {
           ? sortedMarathons.map((marathon) => (
               <MarathonCard key={marathon._id} marathon={marathon} />
             ))
-          : marathons.map((marathon) => (
+          : marathons.length &&
+            marathons.map((marathon) => (
               <MarathonCard key={marathon._id} marathon={marathon} />
             ))}
       </div>

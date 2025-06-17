@@ -29,11 +29,11 @@ function MyMarathonList({ myMarathons }) {
     setMyAllMarathons(updatedMarathons);
   };
   console.log(myMarathons);
-  if (!myMarathons.length) {
+  if (!myAllMarathons.length) {
     return (
       <NoData
-        title="No Registrations Yet"
-        description="You haven’t registered for any marathons yet. Once you do, your registration details will appear here. Stay motivated and keep running!"
+        title="No Marathons Created Yet"
+        description="You haven’t organized any marathons yet. Once you create one, it will appear here. Inspire runners by hosting your first event!"
       />
     );
   }

@@ -110,7 +110,7 @@ function MarathonDetails() {
               <FaCalendarAlt className="text-orange-500" />
               <span className="text-sm text-gray-500 dark:text-gray-400 font-light">
                 <span className="font-medium text-[15px] text-gray-900 dark:text-gray-300 mr-2">
-                  Marathon Date:
+                  Marathon Start Date:
                 </span>{" "}
                 {marathonDate}
               </span>
@@ -120,11 +120,21 @@ function MarathonDetails() {
               <FaRegClock className="text-orange-500" />
               <span className="text-sm text-gray-500 dark:text-gray-400 font-light">
                 <span className="font-medium text-[15px] text-gray-900 dark:text-gray-300 mr-2">
-                  Registration:
+                  Registration Start:
                 </span>{" "}
-                {registrationStart} to {registrationEnd}
+                {registrationStart}
               </span>
             </p>
+            <p className="flex items-center gap-2">
+              <FaRegClock className="text-orange-500" />
+              <span className="text-sm text-gray-500 dark:text-gray-400 font-light">
+                <span className="font-medium text-[15px] text-gray-900 dark:text-gray-300 mr-2">
+                  Registration End:
+                </span>{" "}
+                {registrationEnd}
+              </span>
+            </p>
+
             <p className="flex items-center gap-2">
               <FaUserPlus className="text-orange-500" />
               <span className="text-sm text-gray-500 dark:text-gray-400 font-light">

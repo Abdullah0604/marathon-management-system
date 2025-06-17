@@ -1,14 +1,16 @@
 import Swal from "sweetalert2";
 import { MarathonInput, MarathonSelectInput } from "./Inputs";
-import axios from "axios";
+// import axios from "axios";
 import Header from "../../sharedComponents/Header";
 import useAuth from "../../../hooks/useAuth";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 function AddMarathon() {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const [regisStartDate, setRegisStartDate] = useState(new Date());
   const [regisEndDate, setRegisEndDate] = useState(new Date());
   const [marathonDate, setMarathonDate] = useState(new Date());
@@ -37,8 +39,8 @@ function AddMarathon() {
         typeof value === "string" ? value.trim() : value,
       ])
     );
-    axios
-      .post("http://localhost:3000/new-marathon", trimmedMarathon)
+    axiosSecure
+      .post(`/new-marathon?email=${user.email}`, trimmedMarathon)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

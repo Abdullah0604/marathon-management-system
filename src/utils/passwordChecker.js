@@ -3,14 +3,10 @@ export default function passwordChecker(password) {
 
   if (!/[A-Z]/.test(password)) {
     message = "Must have an Uppercase letter.";
-  }
-
-  if (!/[a-z]/.test(password)) {
+  } else if (!/[a-z]/.test(password)) {
     message = "Must have a Lowercase letter.";
-  }
-
-  if (password.length <= 6) {
-    message = "Password must be at least 6 characters long.";
+  } else if (password.length <= 6) {
+    message = "Password must be at least 6 characters or longer.";
   }
 
   return message;

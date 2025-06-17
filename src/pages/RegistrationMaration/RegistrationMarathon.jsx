@@ -1,14 +1,17 @@
-import { useLoaderData, useParams } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
-import axios from "axios";
+// import axios from "axios";
 import AuthInput from "../sharedComponents/AuthInput";
 import useAuth from "../../hooks/useAuth";
 import NotFound from "../NotFound/NotFound";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 function RegistrationMaration() {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const marathon = useLoaderData();
   const { marathonId } = useParams();
+  const navigate = useNavigate();
   // console.log(marathon);
   if (marathon?._id !== marathonId) {
     return <NotFound />;
@@ -58,9 +61,9 @@ function RegistrationMaration() {
     //     console.log(error.message);
     //   });
 
-    axios
+    axiosSecure
       .get(
-        `http://localhost:3000/registration-marathon-query?email=${user.email}&marathonId=${marathon?._id}`
+        `/registration-marathon-query?email=${user.email}&marathonId=${marathon?._id}`
       )
       .then((response) => {
         if (response.data || response.data?.marathonId === marathon?._id) {
@@ -71,16 +74,16 @@ function RegistrationMaration() {
             confirmButtonText: "Okay, got it!",
           });
         } else {
-          axios
-            .post(
-              "http://localhost:3000/registration-marathon",
-              participentData
-            )
+          axiosSecure
+            .post(`/registration-marathon?email=${user.email}`, participentData)
             .then((response) => {
               if (response.data.insertedId) {
-                axios.patch("http://localhost:3000/update-registration-count", {
-                  marathonId: marathon?._id,
-                });
+                axiosSecure.patch(
+                  `/update-registration-count?email=${user.email}`,
+                  {
+                    marathonId: marathon?._id,
+                  }
+                );
 
                 Swal.fire({
                   title: "🎉 Registration Complete!",
@@ -89,6 +92,8 @@ function RegistrationMaration() {
                   confirmButtonText: "Awesome!",
                 });
               }
+
+              navigate("/");
               console.log(response);
             })
             .catch((error) => {
