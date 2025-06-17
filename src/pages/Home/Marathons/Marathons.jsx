@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import MarathonCard from "../../sharedComponents/MarathonCard";
 import { use } from "react";
 
 function Marathons({ marathonPromise }) {
   const marathonsData = use(marathonPromise);
-
+  const [marathons, setMarathons] = useState(marathonsData);
   // console.log(marathonsData);
   return (
     <div className="my-24">
@@ -20,8 +20,8 @@ function Marathons({ marathonPromise }) {
       </div>
 
       <div className="grid md:grid-cols-2 xl:grid-cols-3 my-16 gap-x-20 gap-y-10 ">
-        {marathonsData &&
-          marathonsData.map((marathon) => (
+        {marathons &&
+          marathons.map((marathon) => (
             <MarathonCard key={marathon._id} marathon={marathon} />
           ))}
       </div>

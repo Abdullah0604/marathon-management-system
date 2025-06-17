@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import {
   FaMapMarkerAlt,
   FaRunning,
@@ -12,9 +12,18 @@ import {
 import { AiOutlineClockCircle } from "react-icons/ai";
 import NotFound from "../NotFound/NotFound";
 import CountDown from "../sharedComponents/CountDown";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import Loading from "../../components/Loader/Loading";
+import { useEffect } from "react";
 
 function MarathonDetails() {
-  const marathonDetails = useLoaderData();
+  // const marathonDetails = useLoaderData();
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const [loading, setLoading] = useState(true);
+  const [marathonDetails, setMarathonDetails] = useState([]);
   const { marathonId } = useParams();
   const {
     _id,
@@ -29,9 +38,29 @@ function MarathonDetails() {
     totalRegistrationCount,
   } = marathonDetails;
 
+  useEffect(() => {
+    setLoading(true);
+    axiosSecure
+      .get(`/marathon-details/${marathonId}?email=${user && user.email}`)
+      .then((response) => {
+        console.log(response.data);
+        setLoading(false);
+        setMarathonDetails(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [marathonId, user, axiosSecure]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   if (_id !== marathonId) {
     return <NotFound />;
   }
+
   const startDate = new Date(registrationStart);
   const endDate = new Date(registrationEnd);
   const today = new Date();
@@ -154,9 +183,9 @@ function MarathonDetails() {
                   Registration starts in:
                 </p>
 
-                <p>
+                <div>
                   <CountDown registrationStart={registrationStart} />
-                </p>
+                </div>
               </>
             )}
 

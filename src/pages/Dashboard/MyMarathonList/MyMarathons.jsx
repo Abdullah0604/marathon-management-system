@@ -23,8 +23,9 @@ function MyMarathons() {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
-  }, [user]);
+  }, [user, axiosSecure]);
 
   if (loading) {
     return <Loading />;

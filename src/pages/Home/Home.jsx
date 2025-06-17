@@ -6,9 +6,9 @@ import OurStory from "./OurStory";
 import UpcomingEvents from "./UpcomingEvents/UpcomingEvents";
 import Loading from "../../components/Loader/Loading";
 
-const marathonPromise = fetch("http://localhost:3000/marathons").then((res) =>
-  res.json()
-);
+const marathonPromise = fetch(
+  "https://runnexus-server.vercel.app/marathons"
+).then((res) => res.json());
 
 function Home() {
   return (

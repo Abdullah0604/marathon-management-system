@@ -25,8 +25,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/marathons",
-        hydrateFallbackElement: <Loading />,
-        loader: () => fetch("http://localhost:3000/marathons?marathons=all"),
         element: (
           <PrivateRoute>
             <Marathons />
@@ -35,9 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/marathon-details/:marathonId",
-        hydrateFallbackElement: <Loading />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/marathon-details/${params.marathonId}`),
+
         element: (
           <PrivateRoute>
             <MarathonDetails />
@@ -46,9 +42,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/registration-maration/:marathonId",
-        hydrateFallbackElement: <Loading />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/marathon-details/${params.marathonId}`),
         element: (
           <PrivateRoute>
             <RegistrationMaration />

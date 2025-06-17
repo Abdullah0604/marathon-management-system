@@ -1,12 +1,19 @@
-import React, { useState } from "react";
-import { useLoaderData } from "react-router";
+import React, { useEffect, useState } from "react";
+// import { useLoaderData } from "react-router";
 import MarathonCard from "../sharedComponents/MarathonCard";
 import Loading from "../../components/Loader/Loading";
-import { MarathonSelectInput } from "../Dashboard/AddMarathon/Inputs";
+// import { MarathonSelectInput } from "../Dashboard/AddMarathon/Inputs";
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 function Marathons() {
-  const marathons = useLoaderData();
+  // const marathons = useLoaderData();
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const [loading, setLoading] = useState(false);
+  const [marathons, setMarathons] = useState([]);
+
   const [sortedMarathons, setSortedMarathonns] = useState([]);
   const [sortedValue, setSortedValue] = useState("");
 
@@ -15,7 +22,9 @@ function Marathons() {
     console.log(value);
     setSortedValue(value);
     axios
-      .get(`http://localhost:3000/sorted-marathons?sortValue=${value}`)
+      .get(
+        `https://runnexus-server.vercel.app/sorted-marathons?sortValue=${value}`
+      )
       .then((res) => {
         setSortedMarathonns(res.data);
       })
@@ -23,8 +32,29 @@ function Marathons() {
         console.log(error);
       });
   };
-  if (!marathons) return <Loading />;
+
+  useEffect(() => {
+    setLoading(true);
+    axiosSecure
+      .get(`/all-marathons?email=${user && user.email}`)
+      .then((response) => {
+        console.log(response.data);
+        setLoading(false);
+        setMarathons(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [user, axiosSecure]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  // if (!marathons) return <Loading />;
   // console.log(marathons);
+
   return (
     <div className="my-24">
       <div className="text-center mb-10">

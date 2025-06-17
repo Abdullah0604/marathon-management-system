@@ -1,18 +1,42 @@
-import { useLoaderData, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 // import axios from "axios";
 import AuthInput from "../sharedComponents/AuthInput";
 import useAuth from "../../hooks/useAuth";
 import NotFound from "../NotFound/NotFound";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
+import { useEffect } from "react";
+import Loading from "../../components/Loader/Loading";
 
 function RegistrationMaration() {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const marathon = useLoaderData();
+  const [loading, setLoading] = useState(true);
+  const [marathon, setMarathon] = useState([]);
   const { marathonId } = useParams();
   const navigate = useNavigate();
   // console.log(marathon);
+
+  useEffect(() => {
+    setLoading(true);
+    axiosSecure
+      .get(`/marathon-details/${marathonId}?email=${user && user.email}`)
+      .then((response) => {
+        console.log(response.data);
+        setLoading(false);
+        setMarathon(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [marathonId, user, axiosSecure]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   if (marathon?._id !== marathonId) {
     return <NotFound />;
   }
@@ -37,11 +61,11 @@ function RegistrationMaration() {
     // console.log(participentData);
 
     // axios
-    //   .post("http://localhost:3000/registration-marathon", participentData)
+    //   .post("https://runnexus-server.vercel.app/registration-marathon", participentData)
     //   .then((response) => {
     //     if (response.data.insertedId) {
     //       axios
-    //         .patch("http://localhost:3000/update-registration-count", {
+    //         .patch("https://runnexus-server.vercel.app/update-registration-count", {
     //           marathonId: marathon?._id,
     //         })
     //         .then((response) => {
