@@ -1,12 +1,13 @@
-import React from "react";
+// import React from "react";
 import { use } from "react";
 import { useState } from "react";
 import TableRow from "./TableRow";
 import NoData from "../../sharedComponents/NoData";
-import axios from "axios";
+// import axios from "axios";
 import { FaSearch } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 function MyApplyList({ registrationPromise }) {
   const { user } = useAuth();
@@ -62,12 +63,12 @@ function MyApplyList({ registrationPromise }) {
   const handleSearchValue = (e) => {
     e.preventDefault();
     const title = e.target.search.value;
-    console.log(title);
+    // console.log(title);
 
     axiosSecure
       .get(`/search-registrations?title=${title}&email=${user && user.email}`)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (!response.data.length) {
           setSearchRegistrations("not match");
         } else {
@@ -75,10 +76,15 @@ function MyApplyList({ registrationPromise }) {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
+        Swal.fire({
+          title: "oops!",
+          text: error.message,
+          icon: "error",
+        });
       });
   };
-  console.log(allRegistrations);
+  // console.log(allRegistrations);
 
   if (searchRegistraions === "not match") {
     return (

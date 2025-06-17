@@ -51,9 +51,14 @@ function AddMarathon() {
         }
       })
       .catch((error) => {
-        console.log(error);
+        Swal.fire({
+          title: "oops!",
+          text: error.message,
+          icon: "error",
+        });
+        // console.log(error);
       });
-    console.log(trimmedMarathon);
+    // console.log(trimmedMarathon);
   };
   return (
     <div className="">

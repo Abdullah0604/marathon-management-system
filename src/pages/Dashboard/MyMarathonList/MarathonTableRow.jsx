@@ -11,6 +11,7 @@ import { MarathonInput, MarathonSelectInput } from "../AddMarathon/Inputs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 function MarathonTableRow({ marathon, removeMarathon, updateMarathon, index }) {
   const { user } = useAuth();
@@ -51,10 +52,15 @@ function MarathonTableRow({ marathon, removeMarathon, updateMarathon, index }) {
               removeMarathon(id);
               successAlert("Deleted!", "Your marathon has been deleted");
             }
-            console.log(response.data);
+            // console.log(response.data);
           })
           .catch((error) => {
-            console.error(error);
+            Swal.fire({
+              title: "oops!",
+              text: error.message,
+              icon: "error",
+            });
+            // console.error(error);
           });
       }
     });
@@ -92,12 +98,19 @@ function MarathonTableRow({ marathon, removeMarathon, updateMarathon, index }) {
               successAlert("Updated!", "Your marathon has been updated");
               setIsOpenModal(false);
             }
-            console.log(response);
+            // console.log(response);
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "oops!",
+              text: error.message,
+              icon: "error",
+            });
           });
       }
     });
 
-    console.log(trimmedMarathon);
+    // console.log(trimmedMarathon);
   };
   return (
     <>

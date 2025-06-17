@@ -11,7 +11,7 @@ function Login() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  console.log(state);
+  // console.log(state);
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = e.target;

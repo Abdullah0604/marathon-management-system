@@ -6,6 +6,7 @@ import Loading from "../../components/Loader/Loading";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 function Marathons() {
   // const marathons = useLoaderData();
@@ -19,7 +20,7 @@ function Marathons() {
 
   const handleSorting = (e) => {
     const value = e.target.value;
-    console.log(value);
+    // console.log(value);
     setSortedValue(value);
     axios
       .get(
@@ -29,7 +30,12 @@ function Marathons() {
         setSortedMarathonns(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
+        Swal.fire({
+          title: "oops!",
+          text: error.message,
+          icon: "error",
+        });
       });
   };
 
@@ -38,12 +44,17 @@ function Marathons() {
     axiosSecure
       .get(`/all-marathons?email=${user && user.email}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setLoading(false);
         setMarathons(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        Swal.fire({
+          title: "oops!",
+          text: err.message,
+          icon: "error",
+        });
         setLoading(false);
       });
   }, [user, axiosSecure]);

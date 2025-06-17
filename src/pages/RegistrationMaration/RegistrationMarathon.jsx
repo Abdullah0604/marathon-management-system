@@ -23,12 +23,17 @@ function RegistrationMaration() {
     axiosSecure
       .get(`/marathon-details/${marathonId}?email=${user && user.email}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setLoading(false);
         setMarathon(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        Swal.fire({
+          title: "oops!",
+          text: err.message,
+          icon: "error",
+        });
         setLoading(false);
       });
   }, [marathonId, user, axiosSecure]);
@@ -57,33 +62,6 @@ function RegistrationMaration() {
       image: marathon?.image,
       location: marathon?.location,
     };
-
-    // console.log(participentData);
-
-    // axios
-    //   .post("https://runnexus-server.vercel.app/registration-marathon", participentData)
-    //   .then((response) => {
-    //     if (response.data.insertedId) {
-    //       axios
-    //         .patch("https://runnexus-server.vercel.app/update-registration-count", {
-    //           marathonId: marathon?._id,
-    //         })
-    //         .then((response) => {
-    //           console.log(response);
-    //         });
-
-    //       Swal.fire({
-    //         title: "🎉 Registration Complete!",
-    //         text: "You're officially registered for the marathon. Get ready to run!",
-    //         icon: "success",
-    //         confirmButtonText: "Awesome!",
-    //       });
-    //     }
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //   });
 
     axiosSecure
       .get(
@@ -118,17 +96,27 @@ function RegistrationMaration() {
               }
 
               navigate("/");
-              console.log(response);
+              // console.log(response);
             })
             .catch((error) => {
-              console.log(error.message);
+              // console.log(error.message);
+              Swal.fire({
+                title: "oops!",
+                text: error.message,
+                icon: "error",
+              });
             });
         }
 
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
+        Swal.fire({
+          title: "oops!",
+          text: error.message,
+          icon: "error",
+        });
       });
   };
 

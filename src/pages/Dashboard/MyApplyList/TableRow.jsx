@@ -8,6 +8,7 @@ import useAuth from "../../../hooks/useAuth";
 import AuthInput from "../../sharedComponents/AuthInput";
 import { RxCross2 } from "react-icons/rx";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 function TableRow({
   registration,
@@ -42,10 +43,15 @@ function TableRow({
                 `/update-registration-count?decForThisMarathon=${marathonId}&email=${user.email}`
               );
             }
-            console.log(response.data);
+            // console.log(response.data);
           })
           .catch((error) => {
-            console.error(error);
+            // console.error(error);
+            Swal.fire({
+              title: "oops!",
+              text: error.message,
+              icon: "error",
+            });
           });
       }
     });
@@ -77,12 +83,19 @@ function TableRow({
               successAlert("Updated!", "Your registration has been updated");
               setIsOpenModal(false);
             }
-            console.log(response);
+            // console.log(response);
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "oops!",
+              text: error.message,
+              icon: "error",
+            });
           });
       }
     });
 
-    console.log(updatedInfo, id);
+    // console.log(updatedInfo, id);
   };
   return (
     <>

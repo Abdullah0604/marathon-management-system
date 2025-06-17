@@ -94,7 +94,7 @@ function Register() {
         navigate(`${state ? state : "/"}`);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error) {
           let errorMessage = "Something went wrong!";
 

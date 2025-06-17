@@ -17,6 +17,7 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import Loading from "../../components/Loader/Loading";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 function MarathonDetails() {
   // const marathonDetails = useLoaderData();
@@ -43,12 +44,17 @@ function MarathonDetails() {
     axiosSecure
       .get(`/marathon-details/${marathonId}?email=${user && user.email}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setLoading(false);
         setMarathonDetails(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        Swal.fire({
+          title: "oops!",
+          text: err.message,
+          icon: "error",
+        });
         setLoading(false);
       });
   }, [marathonId, user, axiosSecure]);

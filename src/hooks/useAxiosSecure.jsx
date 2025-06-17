@@ -30,7 +30,7 @@ function useAxiosSecure() {
           if (err?.response?.status === 401 || err?.response?.status === 403) {
             userLogOut()
               .then(() => {
-                console.log("Logged out due to token issue.");
+                // console.log("Logged out due to token issue.");
               })
               .catch(console.error);
           }

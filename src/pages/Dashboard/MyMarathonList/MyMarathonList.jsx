@@ -4,7 +4,7 @@ import { useState } from "react";
 import NoData from "../../sharedComponents/NoData";
 
 function MyMarathonList({ myMarathons }) {
-  console.log(myMarathons);
+  // console.log(myMarathons);
   const [myAllMarathons, setMyAllMarathons] = useState(myMarathons);
 
   const removeMarathon = (id) => {
@@ -28,7 +28,7 @@ function MyMarathonList({ myMarathons }) {
 
     setMyAllMarathons(updatedMarathons);
   };
-  console.log(myMarathons);
+  // console.log(myMarathons);
   if (!myAllMarathons.length) {
     return (
       <NoData
