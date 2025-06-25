@@ -47,9 +47,10 @@ Welcome to **RunNexus**, a complete marathon management platform that connects o
   "swiper": "^11.2.8",
   "tailwindcss": "^4.1.8"
 }
-
+```
 ## How to Run the Project
 
-1. Prothome dependencies install korun:
+
 ```bash
-npm install
+npm install 
+```
