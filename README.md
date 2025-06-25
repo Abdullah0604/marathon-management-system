@@ -48,9 +48,29 @@ Welcome to **RunNexus**, a complete marathon management platform that connects o
   "tailwindcss": "^4.1.8"
 }
 ```
-## How to Run the Project
 
+## ⚙️ How to Run Locally
 
+### 1.Clone the repository
+```bash
+git clone https://github.com/your-username/run-nexus.git
+cd run-nexus
+```
+### 2.Install Dependencies
 ```bash
 npm install 
+```
+### 3.Create and Configure .env File
+```bash
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+```
+### 4.Run the application
+```bash
+npm run dev 
 ```
