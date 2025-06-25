@@ -53,8 +53,8 @@ Welcome to **RunNexus**, a complete marathon management platform that connects o
 
 ### 1.Clone the repository
 ```bash
-git clone https://github.com/your-username/run-nexus.git
-cd run-nexus
+git clone https://github.com/Abdullah0604/marathon-management-system.git
+cd marathon-management-system
 ```
 ### 2.Install Dependencies
 ```bash
