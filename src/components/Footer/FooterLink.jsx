@@ -1,9 +1,12 @@
 import React from "react";
 
-function FooterLink({ text }) {
+function FooterLink({ text, href }) {
   return (
     <li className="mb-4">
-      <a className="hover:underline text-sm md:text-base cursor-pointer">
+      <a
+        href={`#${href}`}
+        className="hover:underline text-sm md:text-base cursor-pointer"
+      >
         {text}
       </a>
     </li>

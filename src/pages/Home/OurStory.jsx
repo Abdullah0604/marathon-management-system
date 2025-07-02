@@ -31,7 +31,10 @@ const features = [
 
 export default function OurStory() {
   return (
-    <section className="w-full bg-white dark:bg-base-100/40 shadow-sm rounded-2xl border-1 border-gray-300 dark:border-gray-700 py-12 px-4 md:px-12 my-32">
+    <section
+      id="story"
+      className="w-full bg-white dark:bg-base-100/40 shadow-sm rounded-2xl border-1 border-gray-300 dark:border-gray-700 py-12 px-4 md:px-12 my-32"
+    >
       <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10 items-center">
         {/* Image */}
         <div className="w-full  lg:w-2/5">

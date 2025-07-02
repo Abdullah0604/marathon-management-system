@@ -36,6 +36,11 @@ function Navbar() {
           Marathons
         </NavLink>
       </li>
+      <li onClick={handleCloseMenu} className="font-medium ">
+        <NavLink to="/contact" className="px-3 py-2">
+          Contact US
+        </NavLink>
+      </li>
       {user && (
         <li onClick={handleCloseMenu} className="font-medium ">
           <NavLink to="/dashboard" className="px-3 py-2">

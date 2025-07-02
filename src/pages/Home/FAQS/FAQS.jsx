@@ -1,5 +1,6 @@
 import { FaCommentDots } from "react-icons/fa";
 import FAQ from "./FAQ";
+import { Link } from "react-router";
 
 function FAQS() {
   const faqs = [
@@ -30,7 +31,7 @@ function FAQS() {
   ];
 
   return (
-    <div className="my-28 flex flex-col lg:flex-row gap-14">
+    <div id="faqs" className="my-28 flex flex-col lg:flex-row gap-14">
       <div className=" space-y-5 w-full lg:w-2/3">
         <div className="collapse collapse-plus bg-base-100 border border-base-300 shadow-sm py-2 ">
           <input
@@ -66,9 +67,11 @@ function FAQS() {
           No worries! We're here to help. Feel free to reach out to us anytime
           through our social media channels or email us directly at
         </p>
-        <button className="bg-orange-400 text-slate-100 px-8 py-2 rounded-full font-medium">
-          Contact us
-        </button>
+        <Link to="/contact">
+          <button className="bg-orange-400 text-slate-100 px-8 py-2 rounded-full font-medium">
+            Contact us
+          </button>
+        </Link>
       </div>
     </div>
   );

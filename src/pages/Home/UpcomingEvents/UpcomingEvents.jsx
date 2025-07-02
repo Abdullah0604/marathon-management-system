@@ -77,7 +77,7 @@ const upcomingEvents = [
 
 function UpcomingEvents() {
   return (
-    <div className="my-24">
+    <div id="upcoming" className="my-24">
       <div className="text-center">
         <h1 className="text-2xl md:text-3xl font-semibold ">
           Upcoming Events & Programs

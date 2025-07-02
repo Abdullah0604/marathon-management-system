@@ -6,6 +6,7 @@ import FooterBottom from "./FooterBottom";
 import FooterHR from "./FooterHR";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import FooterLink from "./FooterLink";
+import { Link } from "react-router";
 function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900">
@@ -50,26 +51,33 @@ function Footer() {
               <FooterResources />
             </div>
 
-            <div>
+            {/* <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Follow us
               </h2>
               <FollowsUs />
-            </div>
+            </div> */}
 
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Legal
+                Company
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <FooterLink text=" Privacy Policy" />
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/about"
                     className="hover:underline  text-sm md:text-base "
                   >
-                    Terms &amp; Conditions
-                  </a>
+                    About US
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="hover:underline  text-sm md:text-base "
+                  >
+                    Contact US
+                  </Link>
                 </li>
               </ul>
             </div>

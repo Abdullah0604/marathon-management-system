@@ -4,14 +4,12 @@ import FooterLink from "./FooterLink";
 function FooterResources() {
   return (
     <ul className="text-gray-500 dark:text-gray-400 font-medium ">
-      <FooterLink text="Events" />
-      <FooterLink text="Event Details" />
-      <FooterLink text="Training Plans" />
-      <FooterLink text="Nutrition Guide" />
+      <FooterLink href="story" text="Our Story" />
 
-      <li>
-        <a className="hover:underline text-sm lg:text-base">FAQs</a>
-      </li>
+      <FooterLink href="upcoming" text="Upcoming Events" />
+
+      <FooterLink href="offers" text="Promotions & Offers" />
+      <FooterLink href="faqs" text="FAQS" />
     </ul>
   );
 }
