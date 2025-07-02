@@ -1,14 +1,43 @@
-import React, { Suspense } from "react";
+// import React, { Suspense } from "react";
 import Header from "../../sharedComponents/Header";
 // import applicantEmailApi from "../../../api/applicantEmailApi";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../components/Loader/Loading";
 import MyApplyList from "./MyApplyList";
-import useAllApi from "../../../api/useAllApi";
+import Swal from "sweetalert2";
+import { useEffect } from "react";
+import { useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 function MyApply() {
   const { user } = useAuth();
-  const { myRegistrationsPromise } = useAllApi();
+  const axiosSecure = useAxiosSecure();
+  const [loading, setLoading] = useState(false);
+  const [myRegistrations, setMyRegistrations] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    axiosSecure
+      .get(`/registration-marathon-query?email=${user && user.email}`)
+      .then((response) => {
+        // console.log(response.data);
+        setLoading(false);
+        setMyRegistrations(response.data);
+      })
+      .catch((err) => {
+        // console.log(err);
+        Swal.fire({
+          title: "oops!",
+          text: err.message,
+          icon: "error",
+        });
+        setLoading(false);
+      });
+  }, [user, axiosSecure]);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <Header
@@ -17,11 +46,7 @@ function MyApply() {
         width="max-w-[900px]"
       />
 
-      <Suspense fallback={<Loading />}>
-        <MyApplyList
-          registrationPromise={myRegistrationsPromise(user && user.email)}
-        />
-      </Suspense>
+      <MyApplyList myRegistrations={myRegistrations} />
     </div>
   );
 }

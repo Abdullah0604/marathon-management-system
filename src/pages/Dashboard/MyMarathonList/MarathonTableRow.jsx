@@ -130,7 +130,7 @@ function MarathonTableRow({ marathon, removeMarathon, updateMarathon, index }) {
             <header className="py-10 text-center">
               <h1 className="text-3xl md:text-4xl font-bold">
                 Update Your{" "}
-                <span className="text-orange-500">Registered Marathon</span>
+                <span className="text-orange-500">Posted Marathon</span>
               </h1>
             </header>
 

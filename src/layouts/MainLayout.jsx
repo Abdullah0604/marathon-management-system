@@ -16,16 +16,18 @@ function MainLayout() {
   }, [pathname]);
   if (loading) return <Loading />;
   return (
-    <div className="max-w-[1400px] mx-auto px-2  min-[500px]:px-6 xl:px-0">
+    <div>
       <ToastContainer />
       <div>
         <Navbar />
       </div>
-      <div className="min-h-[calc(100vh-110px)]">
-        <Outlet />
-      </div>
-      <div>
-        <Footer />
+      <div className="max-w-[1400px] mx-auto px-2  min-[500px]:px-6 xl:px-0 pt-16">
+        <div className="min-h-[calc(100vh-110px)]">
+          <Outlet />
+        </div>
+        <div>
+          <Footer />
+        </div>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ function Banner() {
   const contents = [
     {
       id: 1,
-      title: "RunNexus Marathon 2025",
+      title: "RunNexus Marathon ",
       description:
         "Join thousands of runners in an epic journey. Push your limits and run with pride across your city streets!",
       image: bannerOne,
@@ -25,7 +25,7 @@ function Banner() {
     },
     {
       id: 2,
-      title: "Night Sprint Challenge",
+      title: "Night  Challenge",
       description:
         "Experience the thrill of night running under the stars. A challenge for speed, stamina, and spirit!",
       image: bannerTwo,

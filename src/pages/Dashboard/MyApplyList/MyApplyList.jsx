@@ -1,5 +1,5 @@
 // import React from "react";
-import { use } from "react";
+// import { use } from "react";
 import { useState } from "react";
 import TableRow from "./TableRow";
 import NoData from "../../sharedComponents/NoData";
@@ -9,14 +9,14 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-function MyApplyList({ registrationPromise }) {
+function MyApplyList({ myRegistrations }) {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const registrationList = use(registrationPromise);
-  const [allRegistrations, setAllRegistrations] = useState(registrationList);
+  // const registrationList = use(registrationPromise);
+  const [allRegistrations, setAllRegistrations] = useState(myRegistrations);
 
   const [searchRegistraions, setSearchRegistrations] =
-    useState(registrationList);
+    useState(myRegistrations);
 
   const removeRegistration = (id) => {
     const remainingRegistrations = allRegistrations.filter(
@@ -95,7 +95,7 @@ function MyApplyList({ registrationPromise }) {
           <button
             className="px-6 py-2 mt-5 text-slate-100 cursor-pointer bg-orange-500 rounded-full"
             onClick={() => {
-              setSearchRegistrations(registrationList);
+              setSearchRegistrations(myRegistrations);
             }}
           >
             Explore All Registrations

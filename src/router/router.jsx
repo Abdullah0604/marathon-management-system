@@ -13,6 +13,7 @@ import AddMarathon from "../pages/Dashboard/AddMarathon/AddMarathon";
 import MyMarathons from "../pages/Dashboard/MyMarathonList/MyMarathons";
 import MyApply from "../pages/Dashboard/MyApplyList/MyApply";
 import NotFound from "../pages/NotFound/NotFound";
+import About from "../pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         Component: Home,
+      },
+      {
+        path: "/about",
+        Component: About,
       },
       {
         path: "/marathons",

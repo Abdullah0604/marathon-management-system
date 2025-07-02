@@ -2,6 +2,7 @@ import React from "react";
 
 import { FaRegClock } from "react-icons/fa";
 import { MdOutlineEventAvailable } from "react-icons/md";
+import { Link } from "react-router";
 
 function Slider({ content }) {
   const { title, description, image, eventDate, deadline, buttonText } =
@@ -28,9 +29,11 @@ function Slider({ content }) {
           </span>
         </div>
 
-        <button className="px-6 py-3 text-sm bg-orange-500/90 hover:bg-orange-500 transition-all text-white rounded-md font-semibold">
-          {buttonText}
-        </button>
+        <Link to="/marathons">
+          <button className="px-6 py-3 text-sm bg-orange-500/90 hover:bg-orange-500 transition-all text-white rounded-md font-semibold">
+            {buttonText}
+          </button>
+        </Link>
       </div>
 
       {/* Image Section */}

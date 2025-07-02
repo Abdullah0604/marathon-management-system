@@ -27,6 +27,11 @@ function Navbar() {
         </NavLink>
       </li>
       <li onClick={handleCloseMenu} className="font-medium ">
+        <NavLink to="/about" className="px-3  py-2">
+          About US
+        </NavLink>
+      </li>
+      <li onClick={handleCloseMenu} className="font-medium ">
         <NavLink to="/marathons" className="px-3 py-2">
           Marathons
         </NavLink>
@@ -81,8 +86,8 @@ function Navbar() {
   };
 
   return (
-    <div>
-      <div className=" flex w-full justify-between items-center py-5  ">
+    <div className="bg-white/80 dark:bg-gray-950/80 fixed top-0 z-100 w-full">
+      <div className="max-w-[1400px]  mx-auto px-2  min-[500px]:px-6 xl:px-0 flex w-full justify-between items-center py-5  ">
         <div>
           <Logo />
         </div>
